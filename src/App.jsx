@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import './App.css'
 import Header from "./Header"
 import Staffs from "./Staffs"
@@ -20,7 +20,7 @@ export default function App() {
     fullName: "Mufeedah Lawal",
     designation: "Backend Engineer",
     gender: "female",
-    teamName: "TeamA"
+    teamName: "TeamC"
   },
   {
     id: 3,
@@ -48,21 +48,21 @@ export default function App() {
     fullName: "Miskiyah Oke",
     designation: "Product Manager",
     gender: "female",
-    teamName: "TeamB"
+    teamName: "TeamD"
   },
   {
     id: 7,
     fullName: "Taofeeq Badmus",
     designation: "Angular Developer",
     gender: "male",
-    teamName: "TeamC"
+    teamName: "TeamA"
   },
   {
     id: 8,
     fullName: "Aaisha Abdumumin",
     designation: "Product Designer",
     gender: "female",
-    teamName: "TeamC"
+    teamName: "TeamB"
   },
   {
     id: 9,
@@ -76,7 +76,7 @@ export default function App() {
     fullName: "Yusuf Akingbade",
     designation: "Ruby Developer",
     gender: "male",
-    teamName: "TeamD"
+    teamName: "TeamA"
   },
   {
     id: 11,
@@ -104,7 +104,14 @@ export default function App() {
 
     setEmployees(transformedEmployeesArr);
   }
-  
+
+  useEffect(() => {
+    localStorage.setItem("employeeList",JSON.stringify(employees))
+  }, [employees])
+
+  useEffect(() => {
+    localStorage.setItem("selectedEmployeesLiist",JSON.stringify(selectedEmployees))
+  }, [selectedEmployees])
   
   return (
     <main>
